@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WDV101 Intro HTML and CSS</title>
+
+<style>
+
+	form	{
+		width:60%;
+		margin:auto;
+		background-color:lightblue;	
+		padding-left: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
+	
+	form legend	{
+		font-size:larger;
+		text-align:center;
+	}
+
+  input {
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  input[type=submit] {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=reset] {
+    width: 100%;
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #firstName, #lastName, #school, #email {
+    width: 70%;
+  }
+
+  textarea{
+    width: 95%;
+    height: 100px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  #selections {
+    padding: 5px;
+  }
+</style>
+
+</head>
+
+<body>
+<h1>WDV101 Intro HTML and CSS</h1>
+<h2>UNIT 5 - Lesson 2 Server Side Forms</h2>
+<p>This is an example input form that will demonstrate how a form connects to a server side process.</p>
+<form id="form1" name="form1" method="post" action="formHandler.php">
+
+  <legend>Des Moines Area Community College</legend>
+  
+  <p>
+    <label for="firstName"></label>
+    <input type="text" placeholder="First Name" name="firstName" id="firstName">
+  </p>
+  <p>
+    <label for="lastName" ></label>
+    <input type="text" placeholder="Last Name" name="lastName" id="lastName">
+  </p>
+  <p>
+    <label for="email"></label>
+    <input type="text" placeholder="Email" name="email" id="email">
+  </p>
+  <p>
+    <label for="school"></label>
+    <input type="text" placeholder="School Name" name="school" id="school">
+  </p>
+
+<div id="selections">
+  <p>Current Academic Standing:</p>
+  <p>
+  <input type="radio" id="highSchool" name="academic" value="High School">
+  <label for="highSchool">High School</label><br>
+
+  <input type="radio" id="freshman" name="academic" value="freshman">
+  <label for="freshman">Freshman</label><br> 
+
+  <input type="radio" id="sophomore" name="academic" value="sophomore">
+  <label for="sophomore">Sophomore</label><br>
+  </p>
+</div>
+
+<div id="selections">
+  <p>Desired Major</p>
+  <p>
+    <select name="major">
+      <option value="">Please Select Desired Major</option>
+      <option value="CIS">Computer Information Systems</option>
+      <option value="GRD">Graphic Design</option>
+      <option value="WDV">Web Development</option>
+    </select>
+  </p>
+</div>
+
+<div id="selections">
+  <p>Check all that apply:</p>
+  <p>
+    <input type="checkbox" value="Program Information" name="info" >
+    <label for="info">Please contact me with program information</label><br>
+
+    <input type="checkbox" value="Contact a program advisor" name="advisor" >
+    <label for="advisor">I would like to contact a program advisor</label><br>
+  </p>
+</div>
+  <p>
+    <textarea placeholder="Send a message..." name="message"></textarea>
+  </p>
+
+  <p>
+    <input type="submit" name="button" id="button" value="Submit" />
+    <input type="reset" name="button2" id="button2" value="Reset" />
+  </p>
+</form>
+
+<p>&nbsp;</p>
+</body>
+
+</html>
