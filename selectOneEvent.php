@@ -1,38 +1,38 @@
 <?php
-    //This page will SELECT one record/row from the table 
+    //This page will SELECT ONE record/row from the table 
 
     //database work flow
     //  1. Connect to the database
     //  2. Create your SQL command
-    //  3. Prepare your Statement       PDO Prepared Statements
+    //  3. Prepare your Statement..........PDO Prepared Statements
     //  4. Bind any parameters as needed
     //  5. Execute your SQL command/prepared statement
     //  6. Process your result-set/object
 
     //include an external PHP file into this file
-    //  include
-    //  require
+        //include
+        //require
 
     //1. 
-    require 'dbConnect.php';    //copies the content of the dbConnect.php INTO this page       
+        require 'dbConnect.php';    //copies the content of the dbConnect.php INTO this page       
 
-    //2. create the SQL command
-    $sql = "SELECT events_name,events_description FROM wdv341_events WHERE events_id=:recId";     
+    //2. create the SQL command 
+        $sql = "SELECT events_name, events_description, events_presenter, events_date, events_time FROM wdv341_events WHERE events_id=:recId";     
 
     //3. prepare out statement object PDO Prepared Statements
-    $stmt = $conn->prepare($sql);   // -> is used instead of . for object->property or object->method
+        $stmt = $conn->prepare($sql);   // -> is used instead of . for object->property or object->method
     
         //$stmt = $conn.prepare($sql);    //concatenating $conn with the prepare()
 
-    //4. Bind parameters - named parameter          uses ? as a parameter, s and i
-    $recID = 3;
-    $stmt->bindParam(':recId', $recID);
+    //4. Bind parameters : named parameter      uses ? as a parameter, use s and i
+        $recID = 3;
+        $stmt->bindParam(':recId', $recID);
 
     //5. Execute the statement
-    $stmt->execute();   //runs the prepared statement, stores the results within the statement object      
+        $stmt->execute();   //runs the prepared statement, stores the results within the statement object      
 
     //6. 
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);      //setting ALL fetch commands to return associative array
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);      //setting ALL fetch commands to return associative array
 
     /*
     $row = $stmt->fetch();      //should get the first row from the result set within the statement object
@@ -50,19 +50,6 @@
     $row = $stmt->fetch();      //should get the first row from the result set within the statement object
     echo $row["events_name"];
     */
-
-    /*
-    while($row = $stmt->fetch() ){      //$row is an associative array
-        echo "<h3>";
-        echo $row["events_name"];
-        echo "</h3>";
-        echo "<p>Event Description: ";
-        echo $row["events_description"];
-        echo "</p>";
-    */
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -70,11 +57,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Unit 7</title>
     <style>
         .eventBox {
-            border:thin solid black;
+            background-color: lightgray;
+            box-shadow: 8px 8px gray;
             margin-bottom:20px;
+            padding:20px;
+            width: 50%;
         }
 
         .boldEvent {
@@ -90,12 +80,27 @@
     <?php 
         while($row = $stmt->fetch() ){      //$row is an associative array
             echo "<div class='eventBox'>";
+
                 echo "<h3>";
                     echo $row["events_name"];
                 echo "</h3>";
-                    echo "<p><span class='boldEvent'>Event Description:</span> ";
+
+                echo "<p><span class='boldEvent'>Event Description:</span> ";
                     echo $row["events_description"];
                 echo "</p>";
+
+                echo "<p><span class='boldEvent'>Event Presenter:</span> ";
+                    echo $row["events_presenter"];
+                echo "</p>";
+
+                echo "<p><span class='boldEvent'>Event Date:</span> ";
+                    echo $row["events_date"];
+                echo "</p>";
+
+                echo "<p><span class='boldEvent'>Event Time:</span> ";
+                    echo $row["events_time"];
+                echo "</p>";
+
             echo "</div>\n";        // \n puts the next on a new line
         }
         /*
