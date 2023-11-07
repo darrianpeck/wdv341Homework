@@ -1,3 +1,20 @@
+<?php
+//HoneyPot
+	$firstName = $_POST["firstName"];
+	$middleName = $_POST["middleName"];
+	$lastName = $_POST["lastName"];
+	$email = $_POST["email"];
+
+	if(empty($middleName) ) {
+        //a real person entered form data
+        $message = "Thank you ".$firstName." ".$lastName."."." A signup confirmation has been sent to ".$email.".". " Thank you for your support!";
+    }
+    else {
+        //a bot entered this data
+        $message = "NO BOTS ALLOWED!!!!!!";
+    }
+?>
+
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -42,6 +59,8 @@
 	echo "<p>&nbsp;</p>";
 	*/
 ?>
+<p><?php echo $message; ?></p>
+
 <div id="review">
 
 	<img src="images/dmacc.png" alt="DMACC Life's Calling">
